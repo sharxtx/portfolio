@@ -1,11 +1,64 @@
 'use client'
 
+import Link from "next/link";
+import Container from "../ui/custom/Container";
+import { useTheme } from "next-themes";
+import { Button } from "../ui/button";
+import { Moon, Sun } from "lucide-react";
+import { cn } from "@/lib/utils";
+import { useEffect, useState } from "react";
+
+const navItems = [
+    { name: "About", href: "/about" },
+    { name: "Blog", href: "/blog" },
+    { name: "Projects", href: "/projects" },
+    { name: "Contact", href: "/#contact" },
+]
+
 const Header: React.FC = () => {
-  return (
-    <div>
-        
-    </div>
-  )
+    const [scrolled, setScrolled] = useState(false);
+    const { theme, setTheme } = useTheme();
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setScrolled(window.scrollY > 10);
+        };
+
+        window.addEventListener("scroll", handleScroll);
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+        };
+    }, []);
+
+    return (
+        <header className={cn("fixed top-0 z-50 w-full p-4 md:p-6 transition-all duration-300",
+            scrolled ? "bg-background/80 backdrop-blur-md shadow-md" : "bg-background/0",
+        )}>
+            <Container className="flex items-center justify-between w-full">
+                <div className="font-windsong text-2xl md:text-3xl font-bold hover:text-primary transition ease-in-out duration-300">
+                    <Link href="/">Sharath</Link>
+                </div>
+                <nav className="hidden md:block">
+                    <ul className="flex space-x-4 md:space-x-6">
+                        {
+                            navItems.map((item) => (
+                                <li key={item.name}>
+                                    <Link href={item.href} className="hover:text-primary transition ease-in-out duration-100">{item.name}</Link>
+                                </li>
+                            ))
+                        }
+                    </ul>
+                </nav>
+                <div>
+                    <Button className="rounded-full bg-background hover:bg-button-hover" onClick={() => setTheme(theme === "dark" ? "light" : "dark")}>
+                        {theme === "dark" ? <Sun
+                            className={"size-4 font-semibold text-foreground transition ease-in-out duration-300"}
+                        /> : <Moon className={"size-4 font-semibold text-foreground transition ease-in-out duration-300"} />}
+                    </Button>
+                </div>
+            </Container>
+        </header>
+    )
 }
 
 export default Header;
