@@ -1,8 +1,12 @@
 'use client'
 
+import Container from "../ui/custom/Container"
+
 const Footer:React.FC = () => {
   return (
-    <div className="h-100">Footer</div>
+    <section>
+      <Container>Footer</Container>
+    </section>
   )
 }
 
