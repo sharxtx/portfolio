@@ -32,15 +32,15 @@ const Header: React.FC = () => {
     }, []);
 
     return (
-        <header className={cn("fixed top-0 z-50 w-full py-4 md:px-4 transition-all duration-300",
+        <header className={cn("fixed top-0 z-50 w-full py-4 md:px-0 transition-all duration-300",
             scrolled ? "bg-background/70 backdrop-blur-sm" : "bg-background/0",
         )}>
             <Container className="flex items-center justify-between w-full">
                 <div className="font-windsong text-2xl md:text-3xl font-bold hover:text-primary transition ease-in-out duration-300">
                     <Link href={hash !== '' ? '/#hero' : '/'}>Sharath</Link>
                 </div>
-                <nav className="hidden md:flex items-center justify-center space-x-4 md:space-x-6">
-                    <ul className="flex space-x-4 md:space-x-6">
+                <nav className="flex items-center justify-center space-x-4 md:space-x-6">
+                    <ul className="hidden md:flex space-x-4 md:space-x-6">
                         {
                             navItems.map((item) => (
                                 <li key={item.name}>

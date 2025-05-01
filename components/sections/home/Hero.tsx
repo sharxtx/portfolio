@@ -3,6 +3,7 @@ import Container from '@/components/ui/custom/Container';
 import Image from 'next/image';
 
 import profile from '@/media/profile.jpg'
+import Link from "next/link";
 
 const Hero = () => {
     return (
@@ -65,28 +66,45 @@ const Hero = () => {
                         Creating web experiences that work
                     </motion.p>
 
-                    <motion.div
-                        className="mt-8 "
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{
-                            type: "spring",
-                            delay: 0.7,
-                            stiffness: 150,
-                            damping: 20
-                        }}
-                    >
-                        <motion.a
-                            href="#projects"
-                            className="px-8 py-4 text-lg font-semibold rounded-full shadow-lg"
-                            whileHover={{
-                                scale: 1.05,
-                            }}
-                            whileTap={{ scale: 0.95 }}
+                    <Link href="#projects" className="inline-block">
+                        <motion.button
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ type: "spring", stiffness: 100, damping: 20, delay: 0.7 }}
+                            className="group flex items-center justify-center gap-2 text-white bg-primary/90 mt-4 px-4 py-2 text-md rounded-full hover:bg-primary transition-colors duration-300"
                         >
-                            View Projects
-                        </motion.a>
-                    </motion.div>
+                            View projects
+                            <svg
+                                className="h-4 w-4 transition-all duration-300"
+                                viewBox="2 0 24 24"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                                alternate-title="Arrow Right"
+                                role="img"
+                                aria-label="Arrow Right"
+                            >
+                                <g className="group-hover:scale-x-120 origin-left transition-transform duration-200">
+                                    <line
+                                        x1="4"
+                                        y1="12"
+                                        x2="20"
+                                        y2="12"
+                                        stroke="currentColor"
+                                        strokeWidth="2"
+                                        strokeLinecap="round"
+                                    />
+                                    <polyline
+                                        points="14,6 20,12 14,18"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        strokeWidth="2"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                    />
+                                </g>
+                            </svg>
+                        </motion.button>
+                    </Link>
                 </motion.div>
 
                 {/* Image Container */}
