@@ -49,7 +49,7 @@ export default function RootLayout({
         suppressHydrationWarning
       >
         <Providers>
-          <div className="min-h-screen bg-background font-poppins text-foreground antialiased">
+          <div className="w-full min-h-screen bg-background font-poppins text-foreground antialiased">
             <Header />
             {children}
             <Footer />
