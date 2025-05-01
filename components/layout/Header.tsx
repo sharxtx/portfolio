@@ -21,7 +21,7 @@ const Header: React.FC = () => {
 
     useEffect(() => {
         const handleScroll = () => {
-            setScrolled(window.scrollY > 10);
+            setScrolled(window.scrollY > 80);
         };
 
         window.addEventListener("scroll", handleScroll);
@@ -31,8 +31,8 @@ const Header: React.FC = () => {
     }, []);
 
     return (
-        <header className={cn("fixed top-0 z-50 w-full p-4 md:p-6 transition-all duration-300",
-            scrolled ? "bg-background/80 backdrop-blur-md shadow-md" : "bg-background/0",
+        <header className={cn("fixed top-0 z-50 w-full p-4 transition-all duration-300",
+            scrolled ? "bg-background/70 backdrop-blur-sm" : "bg-background/0",
         )}>
             <Container className="flex items-center justify-between w-full">
                 <div className="font-windsong text-2xl md:text-3xl font-bold hover:text-primary transition ease-in-out duration-300">
@@ -50,7 +50,7 @@ const Header: React.FC = () => {
                     </ul>
                 </nav>
                 <div>
-                    <Button className="rounded-full bg-background hover:bg-button-hover" onClick={() => setTheme(theme === "dark" ? "light" : "dark")}>
+                    <Button className="rounded-full bg-transparent hover:bg-button-hover" onClick={() => setTheme(theme === "dark" ? "light" : "dark")}>
                         {theme === "dark" ? <Sun
                             className={"size-4 font-semibold text-foreground transition ease-in-out duration-300"}
                         /> : <Moon className={"size-4 font-semibold text-foreground transition ease-in-out duration-300"} />}
