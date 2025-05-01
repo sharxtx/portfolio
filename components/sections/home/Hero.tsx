@@ -7,7 +7,7 @@ import profile from '@/media/profile.jpg'
 const Hero = () => {
     return (
         <section id="hero" className="relative flex items-center justify-center w-full h-screen bg-hero-pattern">
-            <div className="absolute inset-0 bg-gradient-to-b from-background/90 to-background/20 z-0" />
+            <div className="absolute inset-0 bg-gradient-to-b from-background/80 to-background/30 z-0" />
 
             <Container className="mt-10 w-full flex flex-col-reverse md:flex-row items-center justify-evenly md:justify-between h-screen relative z-10 px-4">
                 {/* Text Content */}
@@ -17,7 +17,7 @@ const Hero = () => {
                     animate="visible"
                 >
                     <motion.h1
-                        className="text-4xl md:text-6xl font-bold text-foreground mb-2"
+                        className="text-4xl md:text-6xl font-bold text-foreground mb-2 md:leading-16"
                         variants={{
                             hidden: { opacity: 0, y: 30 },
                             visible: { opacity: 1, y: 0 }
@@ -29,7 +29,7 @@ const Hero = () => {
                             delay: 0.1
                         }}
                     >
-                        Hello, I&apos;m <span className="text-primary">Sharath</span>
+                        Hello, <span className="whitespace-nowrap">I&apos;m <span className="text-primary">Sharath</span></span>
                     </motion.h1>
 
                     <motion.p
@@ -49,7 +49,7 @@ const Hero = () => {
                     </motion.p>
 
                     <motion.p
-                        className="mt-4 text-muted-foreground text-lg md:text-xl max-w-md md:max-w-xl"
+                        className="mt-4 text-muted-foreground text-sm md:text-md"
                         variants={{
                             hidden: { opacity: 0, y: 20 },
                             visible: { opacity: 1, y: 0 }
@@ -102,7 +102,7 @@ const Hero = () => {
                     }}
                 >
                     <div className="relative w-[200px] h-[200px] md:w-[300px] md:h-[300px] 
-            overflow-hidden border-4 border-primary/20 
+            overflow-hidden 
             rounded-[40%_60%_60%_40%_/_60%_40%_60%_40%]
             rotate-3 hover:rotate-6 transition-transform duration-500
             shadow-xl hover:shadow-2xl">

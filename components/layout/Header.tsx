@@ -32,7 +32,7 @@ const Header: React.FC = () => {
     }, []);
 
     return (
-        <header className={cn("fixed top-0 z-50 w-full p-4 transition-all duration-300",
+        <header className={cn("fixed top-0 z-50 w-full py-4 md:px-4 transition-all duration-300",
             scrolled ? "bg-background/70 backdrop-blur-sm" : "bg-background/0",
         )}>
             <Container className="flex items-center justify-between w-full">
