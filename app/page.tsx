@@ -1,5 +1,7 @@
 'use client'
 
+import Contact from "@/components/sections/home/Contact";
+import Experience from "@/components/sections/home/Experience";
 import Hero from "@/components/sections/home/Hero";
 import dynamic from "next/dynamic";
 
@@ -10,6 +12,10 @@ export default function Home() {
   return (
     <main className="flex w-full min-h-screen flex-col items-center justify-between">
         <Hero />
+        <Experience />
+        {/* <Projects /> */}
+        <Contact />
+        {/* <Footer /> */}
       </main>
   );
 }

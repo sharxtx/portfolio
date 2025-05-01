@@ -2,7 +2,7 @@
 
 const Footer:React.FC = () => {
   return (
-    <div>Footer</div>
+    <div className="h-100">Footer</div>
   )
 }
 

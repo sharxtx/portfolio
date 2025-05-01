@@ -18,6 +18,7 @@ const navItems = [
 const Header: React.FC = () => {
     const [scrolled, setScrolled] = useState(false);
     const { theme, setTheme } = useTheme();
+    const hash = window.location.hash;
 
     useEffect(() => {
         const handleScroll = () => {
@@ -36,9 +37,9 @@ const Header: React.FC = () => {
         )}>
             <Container className="flex items-center justify-between w-full">
                 <div className="font-windsong text-2xl md:text-3xl font-bold hover:text-primary transition ease-in-out duration-300">
-                    <Link href="/">Sharath</Link>
+                    <Link href={hash !== '' ? '/#hero' : '/'}>Sharath</Link>
                 </div>
-                <nav className="hidden md:block">
+                <nav className="hidden md:flex items-center justify-center space-x-4 md:space-x-6">
                     <ul className="flex space-x-4 md:space-x-6">
                         {
                             navItems.map((item) => (
@@ -48,14 +49,12 @@ const Header: React.FC = () => {
                             ))
                         }
                     </ul>
-                </nav>
-                <div>
                     <Button className="rounded-full bg-transparent hover:bg-button-hover" onClick={() => setTheme(theme === "dark" ? "light" : "dark")}>
                         {theme === "dark" ? <Sun
                             className={"size-4 font-semibold text-foreground transition ease-in-out duration-300"}
                         /> : <Moon className={"size-4 font-semibold text-foreground transition ease-in-out duration-300"} />}
                     </Button>
-                </div>
+                </nav>
             </Container>
         </header>
     )
