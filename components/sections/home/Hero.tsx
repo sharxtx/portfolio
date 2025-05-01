@@ -1,16 +1,60 @@
-import { motion } from "framer-motion";
+import { motion, useAnimation } from "framer-motion";
 import Container from '@/components/ui/custom/Container';
 import Image from 'next/image';
 
 import profile from '@/media/profile.jpg'
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import { ArrowDown } from "lucide-react";
 
 const Hero = () => {
+    const controls = useAnimation();
+    const [scrolled, setScrolled] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setScrolled(window.scrollY > 10);
+        };
+
+        window.addEventListener("scroll", handleScroll);
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+        };
+    }, []);
+
+    useEffect(() => {
+        if (!scrolled) {
+            const sequence = async () => {
+                await controls.start({
+                    opacity: 1,
+                    y: 0,
+                    transition: {
+                        type: "spring",
+                        stiffness: 100,
+                        damping: 20,
+                        delay: 0.7
+                    }
+                });
+
+                controls.start({
+                    y: [0, -10, 5, 0],
+                    transition: {
+                        duration: 1,
+                        repeat: Number.POSITIVE_INFINITY,
+                        repeatDelay: 2.5,
+                        ease: "easeInOut"
+                    }
+                });
+            };
+            sequence();
+        }
+    }, [scrolled, controls]);
+
     return (
         <section id="hero" className="relative flex items-center justify-center w-full h-screen bg-hero-pattern">
             <div className="absolute inset-0 bg-gradient-to-b from-background/80 to-background/30 z-0" />
 
-            <Container className="mt-10 w-full flex flex-col-reverse md:flex-row items-center justify-evenly md:justify-between h-screen relative z-10 px-4">
+            <Container className="mt-10 w-full flex flex-col-reverse md:flex-row items-center justify-center gap-16 md:justify-between h-screen relative z-10 px-4">
                 {/* Text Content */}
                 <motion.div
                     className="md:w-3/4 text-center md:text-left mb-8 md:mb-0"
@@ -66,7 +110,7 @@ const Hero = () => {
                         Creating web experiences that work
                     </motion.p>
 
-                    <Link href="#projects" className="inline-block">
+                    <Link href="#projects" className="inline-block mt-4 md:mt-0">
                         <motion.button
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
@@ -123,7 +167,7 @@ const Hero = () => {
             overflow-hidden 
             rounded-[40%_60%_60%_40%_/_60%_40%_60%_40%]
             rotate-3 hover:rotate-6 transition-transform duration-500
-            shadow-xl hover:shadow-2xl">
+            shadow-xl shadow-primary/20">
                         <Image
                             src={profile}
                             alt="Sharath's Profile"
@@ -132,11 +176,13 @@ const Hero = () => {
                             className="scale-105 hover:scale-100 transition-transform duration-500"
                             priority
                         />
-                        {/* Optional pebble shine effect */}
                         <div className="absolute inset-0 bg-gradient-to-br from-transparent via-white/10 to-transparent" />
                     </div>
                 </motion.div>
             </Container>
+
+
+            {!scrolled && <motion.div initial={{ opacity: 0, y: 20 }} animate={controls} transition={{ type: "spring", stiffness: 100, damping: 20, delay: 0.7 }} className="absolute bottom-0 text-center w-full h-16"><span className="flex items-center justify-center gap-2"> Scroll Down <ArrowDown /></span> </motion.div>}
         </section>
     )
 }

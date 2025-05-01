@@ -9,9 +9,11 @@ import { cn } from "@/lib/utils";
 import { useEffect, useState } from "react";
 
 const navItems = [
-    { name: "About", href: "/about" },
-    { name: "Blog", href: "/blog" },
-    { name: "Projects", href: "/projects" },
+    { name: "About", href: "/#about" },
+    { name: "Experience", href: "/#experience" },
+    { name: "Projects", href: "/#projects" },
+    { name: "Skills", href: "/#skills" },
+    { name: "Blog", href: "/#blog" },
     { name: "Contact", href: "/#contact" },
 ]
 
