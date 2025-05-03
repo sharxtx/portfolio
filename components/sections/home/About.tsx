@@ -4,10 +4,10 @@ import React from 'react'
 const About = () => {
   return (
     <section id="about" className="flex flex-col items-center justify-center w-full py-16 relative overflow-hidden">
-      <Container className='relative'>
+      <Container className='relative w-full'>
         <div className="group flex flex-col items-center justify-center w-full max-w-3xl px-4 mx-auto text-center">
-          <h2 className="text-4xl font-bold bg-primary bg-clip-text text-transparent animate-gradient">
-            About Me
+          <h2 className="text-4xl font-bold  animate-gradient">
+            ABOUT ME
           </h2>
 
           <p className="mt-4 text-sm text-muted-foreground">

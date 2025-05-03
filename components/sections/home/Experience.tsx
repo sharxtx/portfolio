@@ -5,7 +5,8 @@ import dreamcasaLogo from "@/media/dreamcasa.png"
 import capgeminiLogo from "@/media/capgemini.png"
 import mazikLogo from "@/media/maziktech.png"
 import type { StaticImageData } from "next/image";
-import ExperienceCard from "./experience/ExperienceCard";
+import ExperienceCard from "./Experience/ExperienceCard";
+import Container from "@/components/ui/custom/Container";
 
 interface ExperienceItem {
     id: number
@@ -74,34 +75,36 @@ const experienceData: ExperienceItem[] = [
 export default function Experience() {
 
     return (
-        <section id="experience" className="pt-24 px-4 md:px-6 mx-auto">
-            <div className="mb-10 text-center">
-                <h2 className="text-4xl font-bold mb-2 text-primary">Experience</h2>
-                <p className="text-muted-foreground max-w-2xl mx-auto">
-                    My professional journey and the companies I&apos;ve had the pleasure to work with.
-                </p>
-            </div>
+        <section id="experience" className="pt-24 mx-auto">
+            <Container className="w-full relative">
+                <div className="mb-10 text-center">
+                    <h2 className="text-4xl font-bold mb-2">EXPERIENCE</h2>
+                    <p className="text-muted-foreground max-w-2xl mx-auto">
+                        My professional journey and the companies I&apos;ve had the pleasure to work with.
+                    </p>
+                </div>
 
-            <div className="space-y-8 relative before:absolute before:top-0 before:bottom-0 before:left-5 before:w-0.5 before:bg-gradient-to-b before:from-primary/60 before:via-primary/40 before:to-primary/20 md:before:left-1/2">
-                {experienceData.map((experience, index) => {
-                    return (
-                        <div key={experience.id} className="relative group">
-                            <div className="absolute left-4 top-5 h-3 w-3 rounded-full bg-primary md:left-1/2 md:-ml-[5px]" />
+                <div className="space-y-8 relative before:absolute before:top-0 before:bottom-0 before:left-5 before:w-0.5 before:bg-gradient-to-b before:from-primary/60 before:via-primary/40 before:to-primary/20 md:before:left-1/2">
+                    {experienceData.map((experience, index) => {
+                        return (
+                            <div key={experience.id} className="relative group">
+                                <div className="absolute left-4 top-5 h-3 w-3 rounded-full bg-primary md:left-1/2 md:-ml-[5px]" />
 
-                            <motion.div
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.3, delay: 0.3 }}
-                                className={`ml-12 md:ml-0 ${index % 2 === 0 ? "md:mr-auto md:pr-8 md:text-right" : "md:ml-auto md:pl-8"} md:max-w-[calc(50%-40px)]`}
-                            >
-                                    
-                                <ExperienceCard key={experience.id} {...experience} />
-                            </motion.div>
-                        </div>
-                    )
-                })}
-            </div>
+                                <motion.div
+                                    initial={{ opacity: 0, y: 20 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ duration: 0.3, delay: 0.3 }}
+                                    className={`ml-12 md:ml-0 ${index % 2 === 0 ? "md:mr-auto md:pr-8 md:text-right" : "md:ml-auto md:pl-8"} md:max-w-[calc(50%-40px)]`}
+                                >
+
+                                    <ExperienceCard key={experience.id} {...experience} />
+                                </motion.div>
+                            </div>
+                        )
+                    })}
+                </div>
+            </Container>
         </section>
     )
 }

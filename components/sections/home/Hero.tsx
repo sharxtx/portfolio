@@ -55,7 +55,6 @@ const Hero = () => {
             <div className="absolute inset-0 bg-gradient-to-b from-background/80 to-background/30 z-0" />
 
             <Container className="mt-10 w-full flex flex-col-reverse md:flex-row items-center justify-center gap-16 md:justify-between h-screen relative z-10 px-4">
-                {/* Text Content */}
                 <motion.div
                     className="md:w-3/4 text-center md:text-left mb-8 md:mb-0"
                     initial="hidden"
@@ -151,7 +150,6 @@ const Hero = () => {
                     </Link>
                 </motion.div>
 
-                {/* Image Container */}
                 <motion.div
                     className="md:w-1/3 flex justify-center items-center"
                     initial={{ opacity: 0, x: 30 }}
