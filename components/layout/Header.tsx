@@ -8,6 +8,8 @@ import { Moon, Sun } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useEffect, useState } from "react";
 
+import NavListItem from "../ui/custom/NavListItem";
+
 const navItems = [
     { name: "About", href: "/#about" },
     { name: "Experience", href: "/#experience" },
@@ -45,9 +47,7 @@ const Header: React.FC = () => {
                     <ul className="hidden md:flex space-x-4 md:space-x-6">
                         {
                             navItems.map((item) => (
-                                <li key={item.name}>
-                                    <Link href={item.href} className="hover:text-primary transition ease-in-out duration-100">{item.name}</Link>
-                                </li>
+                                <NavListItem key={item.name} name={item.name} href={item.href}/>
                             ))
                         }
                     </ul>
