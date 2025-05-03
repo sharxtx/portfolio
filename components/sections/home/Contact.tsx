@@ -1,6 +1,8 @@
+'use client'
+
 import Container from '@/components/ui/custom/Container'
 import React from 'react'
-import ContactForm from './temp/ContactForm'
+import ContactForm from './contact/ContactForm'
 import { Button } from '@/components/ui/button'
 import { Github } from '@/components/ui/icons/Github'
 import { X } from '@/components/ui/icons/X'

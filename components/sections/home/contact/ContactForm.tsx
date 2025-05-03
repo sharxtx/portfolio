@@ -1,5 +1,6 @@
+'use client'
+
 import { z } from "zod"
-// import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 
 import {
@@ -24,7 +25,6 @@ const contactFormSchema = z.object({
 
 const ContactForm: React.FC = () => {
   const form = useForm<z.infer<typeof contactFormSchema>>({
-    // resolver: zodResolver(contactFormSchema),
     defaultValues: {
       fullname: "",
       email: "",
@@ -37,11 +37,6 @@ const ContactForm: React.FC = () => {
     toast("Still haven't implemented the mail trigger, maybe ping on other platforms?")
     const res = contactFormSchema.safeParse(values);
     console.log(res)
-    // if (!res.success) {
-    //   console.log(res.error.format())
-    //   toast("Yeaa, you can't do that. Maybe try filling the form correctly?")
-    //   return
-    // }
   }
 
   return (
