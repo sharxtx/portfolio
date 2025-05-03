@@ -4,6 +4,11 @@ const nextConfig: NextConfig = {
   allowedDevOrigins: [
     "172.26.0.1",
   ],
+  images: {
+    remotePatterns: [
+      // {hostname: "https://www.capgemini.com/"},
+    ]
+  },
   async headers() {
     return [
       {
