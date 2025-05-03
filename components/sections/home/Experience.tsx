@@ -5,7 +5,7 @@ import dreamcasaLogo from "@/media/dreamcasa.png"
 import capgeminiLogo from "@/media/capgemini.png"
 import mazikLogo from "@/media/maziktech.png"
 import type { StaticImageData } from "next/image";
-import ExperienceCard from "./Experience/ExperienceCard";
+import ExperienceCard from "@/components/sections/home/Experience/ExperienceCard";
 import Container from "@/components/ui/custom/Container";
 
 interface ExperienceItem {
