@@ -1,5 +1,3 @@
-'use client'
-
 import Container from '@/components/ui/custom/Container'
 import React from 'react'
 import ContactForm from './contact/ContactForm'
