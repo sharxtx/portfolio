@@ -28,7 +28,7 @@ const About = () => {
             <span className="group-hover:text-highlight-error whitespace-nowrap">
             binge-watching anime
             </span>
-            , 
+            , {" "}
             <span className="group-hover:text-highlight-secondary whitespace-nowrap">
             discovering new music
             </span>. I also unwind with{" "}
