@@ -13,26 +13,26 @@ const About = () => {
           <p className="mt-4 text-sm text-muted-foreground">
             Hello! I&apos;m Sharath Chandra, a{' '}
             curious and creative developer with 
-            <span className='group-hover:text-highlight-primary'> 2+ years of experience in software development</span>. I like working with different technologies and developing applications: front-end, and back-end.
+            <span className='group-hover:text-highlight-primary transition-colors duration-300 ease-in-out'> 2+ years of experience in software development</span>. I like working with different technologies and developing applications: front-end, and back-end.
             I love studying Software Development.
           </p>
 
           <p className="mt-4 text-sm text-muted-foreground">
             I hold a
-            <span className='group-hover:text-highlight-accent'> degree in Information Technology</span> , which laid the groundwork for my love of <span className='whitespace-nowrap'>problem-solving</span> and systems thinking.
+            <span className='group-hover:text-highlight-accent transition-colors duration-300 ease-in-out'> degree in Information Technology</span> , which laid the groundwork for my love of <span className='whitespace-nowrap'>problem-solving</span> and systems thinking.
             But the tech world never stops evolving, and neither do I! I&apos;m constantly experimenting with modern frameworks and tools to push boundaries and stay inspired.
           </p>
 
           <p className="mt-4 text-sm text-muted-foreground ">
             When I&apos;m not building things, I&apos;m probably {" "}
-            <span className="group-hover:text-highlight-error whitespace-nowrap">
+            <span className="group-hover:text-highlight-error transition-colors duration-300 ease-in-out whitespace-nowrap">
             binge-watching anime
             </span>
             , {" "}
-            <span className="group-hover:text-highlight-secondary whitespace-nowrap">
+            <span className="group-hover:text-highlight-secondary transition-colors duration-300 ease-in-out whitespace-nowrap">
             discovering new music
             </span>. I also unwind with{" "}
-            <span className="group-hover:text-highlight-warning whitespace-nowrap">
+            <span className="group-hover:text-highlight-warning transition-colors duration-300 ease-in-out whitespace-nowrap">
               video games
             </span>
             —they&apos;re a fun reminder of how creativity and technology can create immersive worlds.
