@@ -119,7 +119,7 @@ const Hero = () => {
                         >
                             View projects
                             <svg
-                                className="h-4 w-4 transition-all duration-300"
+                                className="h-4 w-4 transition-all ease-in-out duration-500"
                                 viewBox="2 0 24 24"
                                 fill="none"
                                 xmlns="http://www.w3.org/2000/svg"
