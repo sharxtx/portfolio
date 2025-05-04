@@ -46,7 +46,7 @@ const Header: React.FC = () => {
             scrolled ? "bg-background/70 backdrop-blur-sm" : "bg-background/0",
         )}>
             <Container className="flex items-center justify-between w-full">
-                <div className="font-windsong text-2xl z-10 md:text-3xl font-bold hover:text-primary transition ease-in-out duration-300">
+                <div className="font-windsong text-2xl z-10 md:text-3xl font-bold hover:text-primary transition ease-in-out duration-300" onClick={() => setIsOpen(false)} onKeyDown={() => setIsOpen(false)} >
                     <Link href={hash !== '' ? '/#hero' : '/'}>Sharath</Link>
                 </div>
                 <nav className="flex items-center justify-center md:space-x-6">
