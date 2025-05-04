@@ -4,9 +4,11 @@ import Link from "next/link";
 import Container from "../ui/custom/Container";
 import { useTheme } from "next-themes";
 import { Button } from "../ui/button";
-import { Moon, Sun } from "lucide-react";
+import { Menu, Moon, Sun, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useEffect, useState } from "react";
+
+import { AnimatePresence, motion } from 'framer-motion'
 
 import NavListItem from "../ui/custom/NavListItem";
 
@@ -21,8 +23,12 @@ const navItems = [
 
 const Header: React.FC = () => {
     const [scrolled, setScrolled] = useState(false);
+    const [isOpen, setIsOpen] = useState(false);
+
     const { theme, setTheme } = useTheme();
+
     const hash = window.location.hash;
+
 
     useEffect(() => {
         const handleScroll = () => {
@@ -40,14 +46,14 @@ const Header: React.FC = () => {
             scrolled ? "bg-background/70 backdrop-blur-sm" : "bg-background/0",
         )}>
             <Container className="flex items-center justify-between w-full">
-                <div className="font-windsong text-2xl md:text-3xl font-bold hover:text-primary transition ease-in-out duration-300">
+                <div className="font-windsong text-2xl z-10 md:text-3xl font-bold hover:text-primary transition ease-in-out duration-300">
                     <Link href={hash !== '' ? '/#hero' : '/'}>Sharath</Link>
                 </div>
-                <nav className="flex items-center justify-center space-x-4 md:space-x-6">
+                <nav className="flex items-center justify-center md:space-x-6">
                     <ul className="hidden md:flex space-x-4 md:space-x-6">
                         {
                             navItems.map((item) => (
-                                <NavListItem key={item.name} name={item.name} href={item.href}/>
+                                <NavListItem key={item.name} name={item.name} href={item.href} />
                             ))
                         }
                     </ul>
@@ -56,7 +62,31 @@ const Header: React.FC = () => {
                             className={"size-4 font-semibold text-foreground transition ease-in-out duration-300"}
                         /> : <Moon className={"size-4 font-semibold text-foreground transition ease-in-out duration-300"} />}
                     </Button>
+                    <Button
+                        variant="ghost"
+                        size="icon"
+                        className="md:hidden rounded-full bg-transparent hover:bg-button-hover z-10"
+                        onClick={() => setIsOpen(!isOpen)}
+                    >
+                        {isOpen ? <X className="size-4" /> : <Menu className="size-4" />}
+                    </Button>
                 </nav>
+
+                <AnimatePresence>
+                    {
+                        isOpen && (
+                            <nav className="md:hidden absolute top-0 left-0 w-full h-screen flex flex-col items-center justify-center gap-8 bg-background">
+                                <motion.ul initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3 }} exit={{ opacity: 0, y: -5}} className="flex flex-col items-center gap-4">
+                                    {
+                                        navItems.map((item) => (
+                                            <NavListItem key={item.name} name={item.name} href={item.href} onClick={() => setIsOpen(false)} />
+                                        ))
+                                    }
+                                </motion.ul>
+                            </nav>
+                        )
+                    }
+                </AnimatePresence>
             </Container>
         </header>
     )

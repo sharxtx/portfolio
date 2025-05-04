@@ -6,11 +6,16 @@ import Link from 'next/link';
 interface NavItemProps {
     name: string;
     href: string;
+    onClick?: () => void;
 }
 
-const NavListItem: React.FC<NavItemProps> = ({ name, href }) => {
+const NavListItem: React.FC<NavItemProps> = ({ name, href, onClick }) => {
     return (
-        <li className="list-none">
+        <li className="list-none" onClick={onClick} onKeyDown={(e) => {
+            if ((e.key === 'Enter' || e.key === ' ') && onClick) {
+                onClick();
+            }
+        }} >
             <Link href={href}>
                 <motion.div
                     className="flex flex-col cursor-pointer"
