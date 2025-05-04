@@ -31,12 +31,11 @@ const poppings = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Profolio",
-  description: "Just a random portfolio",
+  title: "Portfolio",
+  description: "Software Developer | Sharath Chandra",
   icons: {
     icon: "/favicon.ico",
     shortcut: "/favicon.ico",
-    apple: "/apple-touch-icon.png",
   },
 };
 
