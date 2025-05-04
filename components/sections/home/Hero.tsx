@@ -114,7 +114,7 @@ const Hero = () => {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ type: "spring", stiffness: 100, damping: 20, delay: 0.7 }}
-                            className="group flex items-center justify-center gap-2 text-white bg-primary/90 mt-4 px-4 py-2 text-md rounded-full hover:bg-primary transition-colors duration-300"
+                            className="group flex items-center justify-center gap-2 text-white bg-primary/90 mt-4 px-4 py-2 text-md rounded-lg hover:bg-primary transition-colors duration-300"
                         >
                             View projects
                             <svg
@@ -165,14 +165,14 @@ const Hero = () => {
             overflow-hidden 
             rounded-[40%_60%_60%_40%_/_60%_40%_60%_40%]
             rotate-3 hover:rotate-6 transition-transform duration-500
-            shadow-xl shadow-primary/20">
+            shadow-xl shadow-black/20">
                         <Image
                             src={profile}
                             alt="Sharath's Profile"
                             layout="fill"
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                             objectFit="cover"
                             className="scale-105 hover:scale-100 transition-transform duration-500"
-                            priority
                         />
                         <div className="absolute inset-0 bg-gradient-to-br from-transparent via-white/10 to-transparent" />
                     </div>

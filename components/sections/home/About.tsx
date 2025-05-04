@@ -3,10 +3,10 @@ import React from 'react'
 
 const About = () => {
   return (
-    <section id="about" className="flex flex-col items-center justify-center w-full py-16 relative overflow-hidden">
+    <section id="about" className="flex flex-col items-center justify-center w-full pt-16 relative overflow-hidden">
       <Container className='relative w-full'>
         <div className="group flex flex-col items-center justify-center w-full max-w-3xl px-4 mx-auto text-center">
-          <h2 className="text-4xl font-bold  animate-gradient">
+          <h2 className="text-4xl font-bold  animate-gradient tracking-widest">
             ABOUT ME
           </h2>
 

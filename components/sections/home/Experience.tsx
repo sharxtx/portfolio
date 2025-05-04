@@ -35,7 +35,7 @@ const experienceData: ExperienceItem[] = [
             "Proposed and developed a browser extension that increased user engagement by 55 % through enhanced usability and accessibility.",
             "Developed background jobs to automate document processing from SharePoint and Confluence, streamlining workflows.",
         ],
-        skills: ["Java", "Spring Boot", "Microservices", "Postgres", "REST", "HTML", "CSS", "JS"],
+        skills: ["Java", "Spring Boot", "Spring Microservices", "Spring Security", "Kafka", "Postgres", "REST", "HTML", "CSS", "JS"],
         companyUrl: "https://www.capgemini.com/",
         logoUrl: capgeminiLogo,
     },
@@ -51,7 +51,7 @@ const experienceData: ExperienceItem[] = [
             "Built robust eCommerce functionality, including dynamic cart and wishlist systems with persistent state.",
             "Engineered a scalable property listing module featuring Google Maps integration for precise location selection and display."
         ],
-        skills: ["NextJS", "TypeScript", "Strapi", "NestJS", "Postgres", "TailwindCSS", "TypeORM"],
+        skills: ["NextJS", "TypeScript", "TailwindCSS", "Zustand", "Strapi", "NestJS", "Postgres", "TypeORM"],
         companyUrl: "http://www.dreamcasarealestate.in",
         logoUrl: dreamcasaLogo,
     },
@@ -66,7 +66,7 @@ const experienceData: ExperienceItem[] = [
             "Developed and implemented user forms with robust validation mechanisms in .NET, ensuring a seamless and error- free user experience.",
             "Created and delivered multiple Proofs of Concept(POCs) to demonstrate the feasibility and effectiveness of new solutions."
         ],
-        skills: ["HTML5", "CSS3", "JavaScript", "jQuery", "Bootstrap"],
+        skills: [".NET", "C#", "JavaScript", "HTML", "CSS", "Syncfusion", "Postgres"],
         companyUrl: "https://maziktech.com/",
         logoUrl: mazikLogo,
     },
@@ -75,10 +75,10 @@ const experienceData: ExperienceItem[] = [
 export default function Experience() {
 
     return (
-        <section id="experience" className="pt-24 mx-auto">
+        <section id="experience" className="pt-16 mx-auto w-full">
             <Container className="w-full relative">
                 <div className="mb-10 text-center">
-                    <h2 className="text-4xl font-bold mb-2">EXPERIENCE</h2>
+                    <h2 className="text-4xl font-bold mb-2 tracking-widest">EXPERIENCE</h2>
                     <p className="text-muted-foreground max-w-2xl mx-auto">
                         My professional journey and the companies I&apos;ve had the pleasure to work with.
                     </p>
