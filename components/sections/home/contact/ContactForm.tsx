@@ -14,11 +14,12 @@ import { Button } from '@/components/ui/button'
 import { toast } from "sonner"
 import { Toaster } from "@/components/ui/sonner"
 import { ArrowRight } from "lucide-react"
+import useThrottle from "@/lib/hooks/useThrottle"
 
 
 const contactFormSchema = z.object({
   fullname: z.string().min(2, "Your name is less than 2 characters?").max(50, "Why so long? Try to keep it under 50 characters."),
-  email: z.string().email({message: "Not a valid email don't you think?"}),
+  email: z.string().email({ message: "Not a valid email don't you think?" }),
   message: z.string().min(10, "Your message is less than 10 characters?").max(500, "Why so long? Try to keep it under 500 characters."),
   phone: z.string().length(10, "Not a valid Indian number.").optional(),
 })
@@ -33,11 +34,14 @@ const ContactForm: React.FC = () => {
     },
   })
 
-  function onSubmit(values: z.infer<typeof contactFormSchema>) {
-    toast("Still haven't implemented the mail trigger, maybe ping on other platforms?")
+  const onSubmit = useThrottle((...args: unknown[]) => {
+    const values = args[0] as z.infer<typeof contactFormSchema>;
+    toast("Still haven't implemented the mail trigger, maybe ping on other platforms?", {
+      duration: 2000,
+    })
     const res = contactFormSchema.safeParse(values);
     console.log(res)
-  }
+  }, 1000)
 
   return (
     <Form {...form}>
