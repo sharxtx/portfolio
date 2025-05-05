@@ -21,7 +21,14 @@ const contactFormSchema = z.object({
   fullname: z.string().min(2, "Your name is less than 2 characters?").max(50, "Why so long? Try to keep it under 50 characters."),
   email: z.string().email({ message: "Not a valid email don't you think?" }),
   message: z.string().min(10, "Your message is less than 10 characters?").max(500, "Why so long? Try to keep it under 500 characters."),
-  phone: z.string().length(10, "Not a valid Indian number.").optional(),
+  phone: z.coerce
+    .string()
+    .refine(
+      (val) => val === "" || /^\d{10}$/.test(val),
+      "Phone must be 10 digits if provided"
+    )
+    .transform((val) => (val === "" ? undefined : val))
+    .optional(),
 })
 
 const ContactForm: React.FC = () => {
@@ -34,13 +41,39 @@ const ContactForm: React.FC = () => {
     },
   })
 
-  const onSubmit = useThrottle((...args: unknown[]) => {
+  const onSubmit = useThrottle(async (...args: unknown[]) => {
     const values = args[0] as z.infer<typeof contactFormSchema>;
-    toast("Still haven't implemented the mail trigger, maybe ping on other platforms?", {
-      duration: 2000,
-    })
-    const res = contactFormSchema.safeParse(values);
-    console.log(res)
+    try {
+      const res = contactFormSchema.parse(values);
+      try {
+        const response = await fetch('/api/contact', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(res),
+        });
+        
+        if (response.ok) {
+          toast('I have received your message. I will get back to you as soon as possible.');
+          form.reset();
+        } else {
+          toast('Looks like something is not working. Can you contact me on other platforms pretty please.');
+        }
+      } catch (e: unknown) {
+        toast('Looks like something is not working. Can you contact me on other platforms pretty please.');
+        if (e instanceof Error) {
+          console.log(e.message);
+        } else {
+          console.log('An unknown error occurred.');
+        }
+      }
+    } catch (e: unknown) {
+      if (e instanceof z.ZodError) {
+        console.log(e.errors)
+        toast(e.errors[0].message);
+      }
+    }
   }, 1000)
 
   return (
