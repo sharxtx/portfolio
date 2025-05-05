@@ -35,7 +35,7 @@ const projectsData: ProjectItem[] = [
     type: "Website",
     technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
     githubUrl: "https://github.com/sharxtx/portfolio",
-    isPrivateRepo: true,
+    isPrivateRepo: false,
     liveUrl: "https://portfolio-azure-eta-87.vercel.app/",
     imageUrl: portfolioDark,
   },
