@@ -1,3 +1,5 @@
+'use client'
+
 import { motion, useAnimation } from "framer-motion";
 import Container from '@/components/ui/custom/Container';
 import Image from 'next/image';
@@ -5,7 +7,7 @@ import Image from 'next/image';
 import profile from '@/media/profile.jpg'
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { ArrowDown } from "lucide-react";
+import { ArrowDown, Download } from "lucide-react";
 
 const Hero = () => {
     const controls = useAnimation();
@@ -56,7 +58,7 @@ const Hero = () => {
 
             <Container className="mt-10 w-full flex flex-col-reverse md:flex-row items-center justify-center gap-16 md:justify-between h-screen relative z-10 px-4">
                 <motion.div
-                    className="md:w-3/4 text-center md:text-left mb-8 md:mb-0"
+                    className="md:w-3/4 text-center md:text-left mb-8 md:mb-0 flex flex-col md:gap-2"
                     initial="hidden"
                     animate="visible"
                 >
@@ -109,45 +111,50 @@ const Hero = () => {
                         Creating web experiences that work
                     </motion.p>
 
-                    <Link href="#projects" className="inline-block mt-4 md:mt-0">
-                        <motion.button
+                    <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-3 mt-4">
+                        <motion.a
+                            href='/resume.pdf'
+                            download="Sharath-Resume.pdf"
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ type: "spring", stiffness: 100, damping: 20, delay: 0.7 }}
-                            className="group flex items-center justify-center gap-2 text-white bg-primary/90 mt-4 px-4 py-2 text-md rounded-lg hover:bg-primary transition-colors duration-300"
+                            className="group flex items-center justify-center gap-2 text-primary border-2 border-primary/80 bg-transparent px-4 py-2 text-md rounded-lg hover:bg-primary/10 transition-colors duration-300 sm:w-auto"
                         >
-                            View projects
-                            <svg
-                                className="h-4 w-4 transition-all ease-in-out duration-500"
-                                viewBox="2 0 24 24"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                                alternate-title="Arrow Right"
-                                role="img"
-                                aria-label="Arrow Right"
+                            Download Resume
+                            <Download className="h-4 w-4 transition-all ease-in-out duration-300 group-hover:translate-y-0.5" />
+                        </motion.a>
+                        <Link href="#projects">
+                            <motion.button
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ type: "spring", stiffness: 100, damping: 20, delay: 0.8 }}
+                                className="group flex items-center justify-center gap-2 text-white bg-primary/90 px-4 py-2 text-md rounded-lg hover:bg-primary transition-colors duration-300 w-full sm:w-auto"
                             >
-                                <g className="group-hover:scale-x-120 origin-left transition-transform duration-200">
-                                    <line
-                                        x1="4"
-                                        y1="12"
-                                        x2="20"
-                                        y2="12"
-                                        stroke="currentColor"
-                                        strokeWidth="2"
-                                        strokeLinecap="round"
-                                    />
-                                    <polyline
-                                        points="14,6 20,12 14,18"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        strokeWidth="2"
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                    />
-                                </g>
-                            </svg>
-                        </motion.button>
-                    </Link>
+                                View projects
+                                <svg
+                                    className="h-4 w-4 transition-all ease-in-out duration-500"
+                                    viewBox="2 0 24 24"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    alternate-title="Arrow Right"
+                                    role="img"
+                                    aria-label="Arrow Right"
+                                >
+                                    <g className="group-hover:scale-x-120 origin-left transition-transform duration-200">
+                                        <line x1="4" y1="12" x2="20" y2="12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                                        <polyline
+                                            points="14,6 20,12 14,18"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            strokeWidth="2"
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                        />
+                                    </g>
+                                </svg>
+                            </motion.button>
+                        </Link>
+                    </div>
                 </motion.div>
 
                 <motion.div
